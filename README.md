@@ -20,7 +20,8 @@ AI-powered fashion recommendation platform providing personalized styling sugges
 **DevOps:** Docker, GitHub Actions
 
 ## 📸 Screenshots
-![alt text](image.png)
+![alt text](<Screenshot 2025-12-16 160527.png>)
+![alt text](<Screenshot 2025-12-16 160801.png>)
 
 ## 🚀 Quick Start
 ```bash
