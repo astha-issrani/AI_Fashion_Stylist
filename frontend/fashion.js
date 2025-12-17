@@ -79,7 +79,7 @@ async function sendMessage() {
     showTypingIndicator();
     
     // API Endpoint constant defined locally for clarity
-    const API_ENDPOINT = 'http://localhost:8000/api/chat'; 
+    const API_ENDPOINT = 'https://aifashionstylist.onrender.com/'; 
 
     try {
         // --- THIS CODE IS NOW INSIDE THE ASYNC FUNCTION AND RUNS ON CLICK ---
