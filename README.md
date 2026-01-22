@@ -45,6 +45,7 @@ npm start
 - Real-time communication with WebSockets
 - Docker containerization strategies
 - CI/CD pipeline implementation
+- Aythentication and Authorization
 
 ## 🤝 Contributing
 Pull requests welcome!
