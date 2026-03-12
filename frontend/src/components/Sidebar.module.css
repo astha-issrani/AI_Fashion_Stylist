@@ -1,0 +1,54 @@
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  padding: 24px 20px;
+
+  background: linear-gradient(
+    180deg,
+    #ff4da6 0%,
+    #ff6fb1 40%,
+    #ff9acb 100%
+  );
+
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Title / logo if you have one */
+.sidebar h2 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Button */
+.sidebar .button {
+  margin-top: auto;
+  padding: 12px 14px;
+
+  background: white;
+  color: #ff4da6;
+
+  border: none;
+  border-radius: 12px;
+
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.25);
+}
+
+.sidebar .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.35);
+}
+
+.sidebar .button:active {
+  transform: scale(0.97);
+}

@@ -1,59 +1,286 @@
-.mainContainer {
+/* App layout */
+.app {
   display: flex;
   height: 100vh;
-  background-color: #fce4ec; /* Light pink background */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fbc2eb, #f7a3de);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
 }
 
-.contentArea {
-  flex: 1;
+/* ---------------- SIDEBAR ---------------- */
+
+.sidebar {
+  width: 280px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
-.header {
-  background-color: #ff4081;
-  padding: 15px;
-  text-align: center;
+/* New Conversation Button - FIXED AT TOP */
+.new-conversation-btn {
+  margin: 20px;
+  padding: 14px 20px;
+  
+  background: linear-gradient(135deg, #ff4da6, #ff7ac3);
   color: white;
-  font-weight: bold;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.hero {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.hero h1 {
-  color: #c2185b;
-  margin-bottom: 10px;
-}
-
-.suggestionGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  width: 100%;
-  max-width: 800px;
-}
-
-.inputWrapper {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.chatBar {
-  width: 100%;
-  max-width: 700px;
-  padding: 15px 50px 15px 20px;
-  border-radius: 30px;
+  
   border: none;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  
+  box-shadow: 0 6px 18px rgba(255, 77, 166, 0.35);
+  transition: all 0.2s ease;
+  
+  flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.new-conversation-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 77, 166, 0.45);
+}
+
+.new-conversation-btn:active {
+  transform: scale(0.97);
+}
+
+/* Sidebar Content - Scrollable */
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 20px 20px 20px;
+}
+
+/* Sidebar scrollbar */
+.sidebar-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 77, 166, 0.3);
+  border-radius: 6px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------------- MAIN CONTENT ---------------- */
+
+.main {
+  flex: 1;
+  padding: 40px 48px 140px 48px;
+  overflow-y: auto;
+  height: 100vh;
+  position: relative;
+}
+
+/* Heading */
+.main h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 28px;
+  letter-spacing: -0.5px;
+}
+
+/* ---------------- OUTFIT RESULTS ---------------- */
+
+.outfit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+
+.outfit-card {
+  background: linear-gradient(
+  135deg,
+  rgba(255, 183, 197, 0.95),  /* soft peach-pink */
+  rgba(255, 220, 230, 0.9),   /* blush pink */
+  rgba(255, 245, 250, 0.95)   /* near-white pink */
+) !important;
+
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  
+  font-size: 20px;
+  line-height: 1.7;
+  color: #374151;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Text fixes */
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  overflow-y: auto;
+  max-height: 450px;
+  max-width: 200%;
+  
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.outfit-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 1px rgba(255, 77, 166, 0.1);
+  border-color: rgba(255, 77, 166, 0.2);
+}
+
+/* Style the text inside outfit cards */
+.outfit-card strong {
+  color: #1f2937;
+  font-weight: 600;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-style:italic;
+}
+
+.outfit-card p {
+  margin: 0 0 12px 0;
+}
+
+.outfit-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Scrollbar inside cards */
+.outfit-card::-webkit-scrollbar {
+  width: 5px;
+}
+
+.outfit-card::-webkit-scrollbar-thumb {
+  background: rgba(255, 77, 166, 0.25);
+  border-radius: 5px;
+}
+
+.outfit-card::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
+}
+
+/* ---------------- CHAT INPUT ---------------- */
+
+.chat-input {
+  position: fixed;
+  bottom: 0;
+  left: 280px; /* Account for sidebar width */
+  right: 0;
+  
+  display: flex;
+  gap: 12px;
+  padding: 24px 48px;
+  align-items: flex-end;
+  background: linear-gradient(to top, rgba(251, 194, 235, 0.98), rgba(251, 194, 235, 0.95));
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 -6px 25px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.chat-input textarea {
+  flex: 1;
+  padding: 16px 18px;
+  min-height: 56px;
+  max-height: 140px;
+  resize: none;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: white;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.5;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.chat-input textarea:focus {
   outline: none;
+  border-color: #ff4da6;
+  box-shadow: 0 0 0 4px rgba(255, 77, 166, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.chat-input textarea::placeholder {
+  color: #9ca3af;
+}
+
+.chat-input button {
+  padding: 16px 28px;
+
+  border: none;
+  border-radius: 16px;
+
+  background: linear-gradient(135deg, #ff4da6, #ff7ac3);
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+  
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 20px rgba(255, 77, 166, 0.35);
+}
+
+.chat-input button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255, 77, 166, 0.45);
+}
+
+.chat-input button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.chat-input button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #ccc, #ddd);
+  box-shadow: none;
+}
+
+/* ---------------- SCROLLBAR (Main content) ---------------- */
+
+.main::-webkit-scrollbar {
+  width: 10px;
+}
+
+.main::-webkit-scrollbar-thumb {
+  background: rgba(255, 77, 166, 0.4);
+  border-radius: 10px;
+}
+
+.main::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 240px;
+  }
+  
+  .chat-input {
+    left: 240px;
+    padding: 20px 24px;
+  }
+  
+  .main {
+    padding: 24px 24px 140px 24px;
+  }
+  
+  .outfit-grid {
+    grid-template-columns: 1fr;
+  }
 }
